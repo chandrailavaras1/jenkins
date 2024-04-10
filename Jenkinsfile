@@ -11,7 +11,7 @@ pipeline{
                 retry(3){
                 timeout(time: 5,unit: "SECONDS"){
                     echo "Sleeping for 5 seconds"
-                    sleep 3
+                    sleep 10
                 }
                 echo "This is executed in retry block"
                 }
