@@ -3,20 +3,16 @@ pipeline{
     stages{
         stage("hello"){
             steps{
-                echo "hello"
+                echo "Sample step"
             }
         }
-        stage("Scripted language"){
+        stage("retry"){
             steps{
-                script{
-                    def course = "k8s"
-                    if(course == "k8s")
-                        println("Thanks for enrolling ${course}")
-                    else
-                        println("enroll")
+                retry(3){
+                    echo "Welcome to Jenkins"
+                    error "testing retry"
                 }
-                sleep 60
-                echo "Script will end here"
+                echo "after retry block"
             }
         }
     }
