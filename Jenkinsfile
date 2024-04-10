@@ -1,20 +1,19 @@
 pipeline{
     agent any
     stages{
-        stage("sample build"){
+        stage("Sample"){
             steps{
-                echo "Sample build is created"
+                echo "Sample file executed"
+                sh "mvn --version"
             }
         }
-        stage("timeout"){
+        stage("tools"){
+            tools{
+                jdk "JDK17"
+            }
             steps{
-                timeout(time: 5,unit: "SECONDS"){
-                    retry(3){
-                        echo "Sleeping for 5 seconds"
-                        sleep 2
-                    }
-                }
-                echo "This is executed in retry block"
+                sh "mvn --version"
+                echo "This is builded in Java 17th Version"
             }
         }
     }
