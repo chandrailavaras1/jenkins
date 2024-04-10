@@ -9,7 +9,7 @@ pipeline{
         stage("when_expression"){
             when{
                 expression{
-                    BRANCH_NAME ==~ /(production|1)/
+                    BRANCH_NAME ==~ /(production|3)/
                 }
             }
             steps{
