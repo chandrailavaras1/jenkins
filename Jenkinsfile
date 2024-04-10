@@ -10,7 +10,7 @@ pipeline{
             steps{
                 retry(3){
                     echo "Welcome to Jenkins"
-                    error "testing retry"
+                    //error "testing retry"
                 }
                 echo "after retry block"
             }
