@@ -1,22 +1,14 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
+    environment{
+        course = "Devops"
+        name = "Chandu"
     }
     stages{
-        stage("Sample"){
+        stage("Build"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
-            }
-        }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
-            }
-            steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "Welcome ${name}"
+                echo "Welcome to ${course} course"
             }
         }
     }
