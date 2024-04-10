@@ -1,22 +1,22 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
+    environment{
+        DEPLOY_TO = "staging"
     }
     stages{
-        stage("Sample"){
+        stage("build"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
+                echo "Sample build"
             }
         }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
+        stage("when_not"){
+            when{
+                not{
+                    equals expected: "staging",actual: "${DEPLOY_TO}"
+                }
             }
             steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "Deploying in Jenkins"
             }
         }
     }
