@@ -14,8 +14,8 @@ pipeline{
                         println("Thanks for enrolling ${course}")
                     else
                         println("enroll")
-                        sleep 60
-                        echo "Script will end here"
+                    sleep 60
+                    echo "Script will end here"
                 }
             }
         }
