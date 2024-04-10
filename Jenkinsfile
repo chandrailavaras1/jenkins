@@ -8,7 +8,7 @@ pipeline{
         stage("env_var"){
             steps{
                 echo "Welcome ${name}"
-                echo "Welcome to ${K8s} course"
+                echo "Welcome to ${course} course"
             }
         }
         stage("local_env"){
