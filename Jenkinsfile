@@ -12,8 +12,8 @@ pipeline{
             }
             steps{
                 echo "Github creds ${GITHUB_CREDS}"
-                echo "Github username ${GITHUB_USR}"
-                echo "Github password ${GITHUB_PSW}"
+                echo "Github username ${GITHUB_CREDS_USR}"
+                echo "Github password ${GITHUB_CREDS_PSW}"
             }
         }
     }
