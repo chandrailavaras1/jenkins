@@ -1,22 +1,20 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
+    environment{
+        DEPLOY_TO = "production"
     }
     stages{
-        stage("Sample"){
+        stage("hello"){
             steps{
                 echo "Sample file executed"
-                sh "mvn -version"
             }
         }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
+        stage("deployed to satges"){
+            when{
+                environment name: "DEPLOY_TO", value = "production"
             }
             steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "This is second stage"
             }
         }
     }
