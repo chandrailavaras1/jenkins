@@ -4,7 +4,7 @@ pipeline{
         stage("Sample"){
             steps{
                 echo "Sample file executed"
-                sh "mvn --version"
+                sh "mvn -version"
             }
         }
         stage("tools"){
@@ -12,7 +12,7 @@ pipeline{
                 jdk "JDK17"
             }
             steps{
-                sh "mvn --version"
+                sh "mvn -version"
                 echo "This is builded in Java 17th Version"
             }
         }
