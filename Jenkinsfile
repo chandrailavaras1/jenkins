@@ -1,22 +1,19 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
-    }
     stages{
-        stage("Sample"){
+        stage("Sample build"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
+                echo "Sample build"
             }
         }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
+        stage("when_expression"){
+            when{
+                expression{
+                    BRANCH_NAME ==~ /(production|1)/
+                }
             }
             steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "This is executed after 1st stage and it is when expression passes"
             }
         }
     }
