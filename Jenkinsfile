@@ -1,22 +1,10 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
-    }
     stages{
-        stage("Sample"){
+        stage("print"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
-            }
-        }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
-            }
-            steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "Below are the file from printenv"
+                sh "printenv"
             }
         }
     }
