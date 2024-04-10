@@ -1,18 +1,17 @@
 pipeline{
     agent any
     stages{
-        stage("hello"){
+        stage("sample build"){
             steps{
-                echo "Sample step"
+                echo "Sample build is created"
             }
         }
-        stage("retry"){
+        stage("timeout"){
             steps{
-                retry(3){
-                    echo "Welcome to Jenkins"
-                    //error "testing retry"
+                timeout(time: 5,unit: "SECONDS"){
+                    echo "Sleeping for 5 seconds"
+                    sleep 60
                 }
-                echo "after retry block"
             }
         }
     }
