@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment{
+        DEPLOY_TO = "prod"
+    }
     stages{
         stage("Sample build"){
             steps{
@@ -7,9 +10,6 @@ pipeline{
             }
         }
         stage("when_anyOf"){
-            environment{
-                DEPLOY_TO = "prod"
-            }
             when{
                 anyOf{
                     branch "3"
