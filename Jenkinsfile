@@ -1,22 +1,30 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
-    }
     stages{
-        stage("Sample"){
+        stage("Build"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
+                echo "Sample build"
             }
         }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
+        stage("when_tag"){
+            when{
+                anyOf{
+                    branch "6"
+                    expression{
+                        BRANCH_NAME ==~ /(prod|4)/
+                    }
+                }
             }
             steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "Sample build creadted with any OF condition"
+            }
+        }
+        stage("prod"){
+            when{
+                tag pattern: "v\\d{1,2}.\\d{1,2}.d{1,2}",comparator: "REGEXP"
+            }
+            steps{
+                echo "Sample build from tag"
             }
         }
     }
