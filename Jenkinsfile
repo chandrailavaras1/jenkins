@@ -7,6 +7,7 @@ pipeline{
             }
         }
         stage("paralleljobs"){
+            failFast true
             parallel{
                 stage("sonar"){
                     steps{
@@ -28,9 +29,11 @@ pipeline{
                     }
                 }
             }
-            steps{
-                echo "This si sscanning stage"
+        }
+        stage ('Deploy') {
+            steps {
+                echo "Deploying to env"
             }
         }
-    }
+    } 
 }
