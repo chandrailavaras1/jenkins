@@ -6,7 +6,7 @@ pipeline{
                 echo "Sample build"
             }
         }
-        stage("parallel_jobs"){
+        stage("paralleljobs"){
             parallel{
                 stage("sonar"){
                     steps{
