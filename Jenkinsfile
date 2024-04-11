@@ -21,7 +21,7 @@ pipeline{
         }
         stage("prod"){
             when{
-                tag pattern: "v\\d{1,2}.\\d{1,2}.d{1,2}",comparator: "REGEXP"
+                tag pattern: "v\\d{1,2}.\\d{1,2}.\\d{1,2}",comparator: "REGEXP"
             }
             steps{
                 echo "Sample build from tag"
