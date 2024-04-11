@@ -1,22 +1,26 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
-    }
     stages{
-        stage("Sample"){
+        stage("Sample build"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
+                echo "Sample build"
             }
         }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
+        stage("when_anyOf"){
+            environment{
+                DEPLOY_TO = "prod"
+            }
+            when{
+                anyOf{
+                    branch "3"
+                    environment name: "DEPLOY_TO",value: "prod"
+                    expression{
+                        BRANCH_NAME ==~ /(prod|2)/
+                    }
+                }
             }
             steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "Sample build created for any Of"
             }
         }
     }
