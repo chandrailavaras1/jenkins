@@ -1,22 +1,35 @@
 pipeline{
     agent any
-    tools{
-        maven "Maven"
-    }
     stages{
-        stage("Sample"){
+        stage("Build"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
+                echo "Sample build"
             }
         }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
+        stage("Parallel_jobs"){
+            parallel{
+                stage("sonar"){
+                    steps{
+                        echo "sonar scans"
+                        sleep 10
+                    }
+                }
+                stage("fortify"){
+                    steps{
+                        echo "sonar scans"
+                        sleep 10
+                    }
+                }
+                stage("trivy"){
+                    steps{
+                        error "Sample file"
+                        echo "sonar scans"
+                        sleep 10
+                    }
+                }
             }
             steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                echo "This si sscanning stage"
             }
         }
     }
