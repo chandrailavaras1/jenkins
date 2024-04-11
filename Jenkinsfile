@@ -22,7 +22,7 @@ pipeline{
                 }
                 stage("trivy"){
                     steps{
-                        error "Sample file"
+                        //error "Sample file"
                         echo "sonar scans"
                         sleep 10
                     }
