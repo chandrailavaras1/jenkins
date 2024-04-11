@@ -14,6 +14,9 @@ pipeline{
                 allOf{
                     branch "4"
                     environment name: "DEPLOY_TO",value: "production"
+                    expression{
+                        BRANCH_NAME ==~ /(production|4)/
+                    }
                 }
             }
             steps{
