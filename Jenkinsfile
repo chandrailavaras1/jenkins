@@ -23,7 +23,7 @@ pipeline{
         )
         credentials(
             name: "My credentials",
-            required: true
+            required: true,
             description: "MY Credentials"
         )
     }
