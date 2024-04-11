@@ -11,7 +11,7 @@ pipeline{
                 anyOf{
                     branch "6"
                     expression{
-                        TAG_NAME ==~ /(v1.0|v1.1.0)/
+                        TAG_NAME ==~ /(v1.0|v1.2.0)/
                     }
                 }
             }
