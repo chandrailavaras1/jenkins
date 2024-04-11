@@ -10,10 +10,13 @@ pipeline{
             }
         }
         stage("when_anyOf"){
+            environment{
+                DEPLOY_TO_SA = "prod"
+            }
             when{
                 anyOf{
                     branch "3"
-                    environment name: "DEPLOY_TO",value: "prod"
+                    environment name: "DEPLOY_TO_SA",value: "prod"
                     expression{
                         BRANCH_NAME ==~ /(prod|2)/
                     }
