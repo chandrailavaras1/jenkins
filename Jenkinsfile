@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        DEPLOY_TO = "production"
+        DEPLOY_TO = production
     }
     stages{
         stage("build"){
@@ -12,7 +12,7 @@ pipeline{
         stage(when_anyOf){
             when{
                 allOf{
-                    branch "product"
+                    branch "4"
                     environment name: "DEPLOY_TO",value: "production"
                 }
             }
