@@ -14,7 +14,7 @@ pipeline {
     stages{
         stage("clone"){
             steps{
-                git credentialsId: 'github_creds', url: 'https://github.com/chandrailavaras1/jenkins.git'
+                git branch: 'main', url: 'https://github.com/chandrailavaras1/jenkins.git'
 
             }
         }
