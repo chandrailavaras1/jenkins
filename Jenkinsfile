@@ -22,6 +22,11 @@ pipeline {
             steps{
                 sh "mvn clean package -Dmaven.test.failure.ignore=true"
             }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+                }
+            }
         }
     }
 }
