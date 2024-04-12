@@ -14,13 +14,12 @@ pipeline {
     stages{
         stage("clone"){
             steps{
-                git branch: 'main', credentialsId: 'github_creds', url: 'https://github.com/chandrailavaras1/jenkins.git'
-                echo "Cloning the repo"
+                git credentialsId: 'github_creds', url: 'https://github.com/chandrailavaras1/jenkins.git'
+
             }
         }
         stage("Build"){
             steps{
-                sh "mvn --version"
                 sh "mvn clean package -Dmaven.test.failure.ignore=true"
             }
         }
