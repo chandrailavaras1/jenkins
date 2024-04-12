@@ -1,22 +1,27 @@
-pipeline{
+pipeline {
     agent any
-    tools{
+    tools {
         maven "Maven"
+        jdk "JDK17"
+    }
+    environment{
+        TOMCAT_CREDS = credentials ("tomcat_creds")
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "34.16.179.184:8081"
+        NEXUS_REPO = "chandu-repo"
     }
     stages{
-        stage("Sample"){
+        stage("clone"){
             steps{
-                echo "Sample file executed"
-                sh "mvn -version"
+                git branch: 'main', credentialsId: 'github_creds', url: 'https://github.com/chandrailavaras1/jenkins.git'
+                echo "Cloning the repo"
             }
         }
-        stage("tools"){
-            tools{
-                jdk "JDK17"
-            }
+        stage("Build"){
             steps{
-                sh "mvn -version"
-                echo "This is builded in Java 17th Version"
+                sh "mvn --version"
+                sh "mvn clean package -Dmaven.test.failure.ignore=true"
             }
         }
     }
